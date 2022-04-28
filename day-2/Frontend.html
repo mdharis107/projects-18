@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: 400px;
+            column-gap: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+        p+img{
+            height: 50px;
+            margin-top: -15px;
+            
+        }
+        h2+p{
+            margin-top: -10px;
+        }
+       div>img{
+           border-top-left-radius: 10px;
+           border-top-right-radius: 10px;
+       }
+       #container>div{
+           /* border: 1px solid red; */
+           height: 430px;
+           width: auto;
+           box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+           border-top-left-radius: 10px;
+           border-top-right-radius: 10px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Frontend</h1>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+    var investorArr=JSON.parse(localStorage.getItem("investorData"));
+    
+    console.log(investorArr)
+            
+    investorArr.forEach(function(elem){
+    
+    var out=document.createElement("div");
+    
+    var investorImg=document.createElement("img")
+    investorImg.setAttribute("src",elem.investorImg)
+   
+    var investorName=document.createElement("h2")
+    investorName.innerText=elem.investorName;
+   
+    var investorRole=document.createElement("p")
+    investorRole.innerText=elem.investorRole;
+   
+    var investorLogo=document.createElement("img")
+    investorLogo.setAttribute("src",elem.investorLogo)
+   
+    out.append(investorImg,investorName,investorRole,investorLogo)
+    document.querySelector("#container").append(out)
+    
+});
+
+</script>
